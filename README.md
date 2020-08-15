@@ -1,2 +1,2 @@
 # Algorithms
-Important algorithms required while coding.
+Important algorithms
