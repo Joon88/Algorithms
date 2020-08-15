@@ -19,6 +19,8 @@ public class Main {
 		tsp();
 		System.out.println("Floyd Warshall-----------------------");
 		fw();
+		System.out.println("Wildcard pattern matching------------------------");
+		wpm();
 	}
 	
 	public static void matrixChain() {
@@ -110,5 +112,10 @@ public class Main {
 											   {INF,0,-2,INF},
 											   {INF, INF, 0, 2},
 											   {1,INF,INF,0}});
+	}
+	
+	public static void wpm() {
+		WildCardPatternMatching wpm = new WildCardPatternMatching();
+		wpm.checkMatch("xaylmz", "*mza");
 	}
 }

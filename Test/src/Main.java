@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Stack;
+import java.util.TreeSet;
 
 public class Main {
 	private static Integer xyz;
@@ -28,10 +32,12 @@ public class Main {
 				return lhs.compareTo(rhs);
 			}
 		});
+		
 
 		Test t = new Test();
 		t.i = 5;
 		List<Test> l = new ArrayList<Test>();
+		
 		l.add(t);
 		l.get(0).i++;
 		System.out.println(t.i);
@@ -51,12 +57,48 @@ public class Main {
 		System.out.println(Long.toBinaryString((long) Math.pow(2, 62)));
 
 		Stack<Integer> l2 = new Stack<>();
-		StringBuilder s = new StringBuilder("rfre");
+		StringBuilder s = new StringBuilder();
+	
+		s.append(false);
+		System.out.println("--------"+s);
 		
 		String str = "fr";
+		
 		// str
 		char ew = 'A' + 1;
 		System.out.println(ssDecodeColID("AA"));
+		Queue<Integer> q = new LinkedList<>();
+		Character[] c = {'a', 'b'};
+		//Arrays.copyOf
+		Collections.reverse(Arrays.asList(c));
+		
+		LinkedList<Integer> list = new LinkedList<>();
+		LinkedList<Integer> list1 = new LinkedList<>();
+		
+		Collections.addAll(list, 1,2,3);
+		Collections.sort(list, new Comparator<Integer>() {
+			public int compare(Integer o1, Integer o2) {
+				return -1*o1.compareTo(o2);
+			}
+		});
+		System.out.println(list.toString());
+		Collections.swap(list, 0, 2);
+		System.out.println(list.toString());
+		Collections.rotate(list, 3);
+		System.out.println(list.toString());
+		System.out.println(Collections.min(list));
+		
+		Integer[] aa = {10,9,8};
+		System.out.println(Arrays.toString(aa));
+		func(aa);
+		System.out.println(Arrays.toString(aa));
+		func1();
+		
+		TreeSet<Integer> ts = new TreeSet<>();
+		System.out.println("as".indexOf("as"));
+		
+		System.out.println("/usr/lib/something".split("/").length);
+		
 	}
 
 	public static int ssDecodeColID(final String col) {
@@ -69,10 +111,16 @@ public class Main {
 		return result-1;
 		}
 
-	public static List<Integer> func() {
+	public static List<Integer> func1() {
 		List<Integer> l = new ArrayList<>();
+		System.out.println(l.getClass().getSimpleName());
 		l.add(1);
 		System.out.println("--" + l);
 		return l;
+	}
+	
+	public static void func(Integer ... a) {
+		int x = 0;
+		System.out.println(a.getClass().getSimpleName());
 	}
 }
