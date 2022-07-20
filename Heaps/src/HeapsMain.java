@@ -13,7 +13,7 @@ public class HeapsMain {
 		//heapDecreaseKey(arr, 1, -100);
 		//System.out.println(Arrays.toString(arr));
 		//System.out.println(Arrays.toString(new int[0]));
-		
+
 		//MaxHeap heap1 = new MaxHeap(arr);
 		//MinHeap heap = new MinHeap(arr1);
 		MaxHeapPQ maxPQ = new MaxHeapPQ(Arrays.asList(arr1));
@@ -30,8 +30,8 @@ public class HeapsMain {
 		maxPQ.insert(43);
 		maxPQ.insert(54);
 		maxPQ.insert(-1);
-		
-		
+
+
 		System.out.println(maxPQ.getMax());
 		System.out.println(maxPQ.extractMax());
 		maxPQ.insert(111);
@@ -81,33 +81,33 @@ public class HeapsMain {
 	//	heap.delete(12);
 	//	System.out.println(heap1.toString());
 	//	System.out.println(heap.toString());
-		
+
 	}
-	
+	// O(nlogn) time and 0(1) space (in place sorting algo)
 	public static void heapSort(int[] a) {
 		int heapSize = a.length;
-		buildMaxHeap(a);
+		buildMaxHeap(a); // O(n)
 		for(int i = heapSize-1 ; i > 0 ; i--) {
 			a[i] = a[i] ^ a[0];
 			a[0] = a[i] ^ a[0];
 			a[i] = a[i] ^ a[0];
 			heapSize--;
-			maxHeapify(a, 0, heapSize);
+			maxHeapify(a, 0, heapSize); // O(logn)
 		}
 	}
-	
+	// O(logn) time and O(logn) space (recursive call stack)
 	private static void maxHeapify(int[] a, int i, int heapSize) {
 		int left = 2*i+1;
 		int right = 2*i+2;
 		int largest = i;
-		
+
 		if(left < heapSize && a[left] > a[largest]) {
 			largest = left;
 		}
 		if(right < heapSize && a[right] > a[largest]) {
 			largest = right;
 		}
-		
+
 		if(i != largest) {
 			a[i] = a[i] ^ a[largest];
 			a[largest] = a[i] ^ a[largest];
@@ -115,15 +115,36 @@ public class HeapsMain {
 			maxHeapify(a, largest, heapSize);
 		}
 	}
-	
+	// O(logn) time and O(1) space (no call stack, same as maxHeapify, bu with no recursion)
+	public static void siftDown(int currentIdx, int endIdx, List<Integer> heap) {
+		// Write your code here.
+		do {
+			int left = 2*currentIdx + 1;
+			int right = 2*currentIdx + 2;
+			int smallest = currentIdx;
+			if(left < heap.size() && heap.get(smallest) > heap.get(left)) {
+				smallest = left;
+			}
+			if(right < heap.size() && heap.get(smallest) > heap.get(right)) {
+				smallest = right;
+			}
+			if(smallest == currentIdx)
+				break;
+			int temp = heap.get(currentIdx);
+			heap.set(currentIdx, heap.get(smallest));
+			heap.set(smallest, temp);
+			currentIdx = smallest;
+		} while (currentIdx <= endIdx);
+	}
+	// O(n) time - some mathematics involved, O(1) space
 	private static void buildMaxHeap(int[] a) {
 		int heapSize = a.length;
-		
+
 		for(int i = (heapSize-2)/2 ; i >= 0 ; i--) {
 			maxHeapify(a, i, heapSize);
 		}
 	}
-	
+	// O(logn) time and O(1) space
 	public static int heapExtractMax(int[] heap) {
 		if(heap == null) {
 			System.out.println("The heap is empty");
@@ -133,11 +154,11 @@ public class HeapsMain {
 		int max = heap[0];
 		heap[0] = heap[heapSize-1];
 		heapSize--;
-		maxHeapify(heap, 0, heapSize);
+		maxHeapify(heap, 0, heapSize); // O(logn)
 		return max;
 	}
-	
-	public static void heapIncreaseKey(int[] heap, int pos, int newVal) {
+	// O(logn) time and O(1) space
+	public static void heapIncreaseKey(int[] heap, int pos, int newVal) { //siftUp
 		if(heap[pos] > newVal) {
 			System.out.println("The new key should be more that the old one");
 			return;
@@ -151,15 +172,15 @@ public class HeapsMain {
 			i = (i-1)/2;
 		}
 	}
-	
-	public static void heapDecreaseKey(int[] heap, int pos, int newVal) {
+	// O(logn) time and O(1) space
+	public static void heapDecreaseKey(int[] heap, int pos, int newVal) { //siftDown
 		if(heap[pos] < newVal) {
 			System.out.println("New val should be less than old one");
 			return;
 		}
 		int heapSize = heap.length;
 		heap[pos] = newVal;
-		maxHeapify(heap, pos, heapSize);
+		maxHeapify(heap, pos, heapSize); // O(logn)
 	}
 }
 
@@ -167,13 +188,13 @@ public class HeapsMain {
  *                 2122
  *                 /   \
  *               121   544
- *               / \   /  \ 
+ *               / \   /  \
  *              43  56 90 -4
- *             /\    /\ 
+ *             /\    /\
  *           12 23 32 21
- * 
- *               
- * 
+ *
+ *
+ *
  *            2321
  *          /      \
  *       67          54
@@ -181,6 +202,6 @@ public class HeapsMain {
  *    65     54      12    0
  *   /  \    /   \   /  \
  *  -1   -45 32  43 -43 -1
- * 
- * 
+ *
+ *
  */
