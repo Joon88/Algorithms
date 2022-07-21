@@ -92,10 +92,12 @@ public class Kruskals {
 
 		DisjointSet ds = new DisjointSet();
 
-		for(List<Edge> l : graph.graph.values()) { // O(ElogE)
+		for(List<Edge> l : graph.graph.values()) { // O(ElogE) (this can be optimised to O(E) if we
+												   // initialise the PQ with add the edges in one go
+												   // using pq.addAll(Collections<>))
 			for(Edge e : l) {
 				pq.add(e);
-				ds.makeSet(e.src);
+				ds.makeSet(e.src);     // O(1) amortized
 				ds.makeSet(e.dest);
 			}
 		}

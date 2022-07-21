@@ -98,6 +98,9 @@ public class Prims {
 		// in priorityQueue but O(log n) in TreeSet. And in order to use any of these 2, we can't just
 		// edit the values in an already present PriorityQ or TreeSet, we have to remove the old value
 		// and add a new value instead. So, edit() = remove_old() + add_new()
+		// BTW we can also use PQ here and skip the usage of remove() by, only adding the src vertex to
+		// the PQ initially, and then adding the destination vertex of a relaxed edged later. So, no
+		// remove() reqd. Thus is similar to the way done in Dijkstra's Alog in this directory.
 		TreeSet<Node> q = new TreeSet<>(new Comparator<Node>() {
 			public int compare(Node o1, Node o2) {
 				return Integer.valueOf(o1.key).compareTo(o2.key);
