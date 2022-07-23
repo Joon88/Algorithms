@@ -4,7 +4,7 @@ import java.util.*;
 Tarjan's Algo : to find all strongly connected components in a graph or also to find
 if a directed graph is strongly connected.
 
-Time : O(V+E) and space : O(V)
+Time : O(V+E) and space : O(V+E) to store the graph
  */
 public class TarjanSCC {
     private static int UNVISITED = -1;
