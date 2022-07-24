@@ -66,7 +66,8 @@ public class Kruskals {
 			}
 		}
 	}
-
+	// When we are directly dealing with edges e.g. sorting or comparing them, we must have
+	// the source vertex, the destination vertex and the edge weight in the edge object
 	private static class Edge {
 		private int src;
 		private int dest;

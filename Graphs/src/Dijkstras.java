@@ -1,11 +1,14 @@
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+/*
+Leetcode example : https://leetcode.com/problems/network-delay-time/
+The above example shows how to handle the problem to multiple Node objects being created
+for a single node id, and how to skip all the damn confusion about it.
+All we need to do, is first create an array of Node objects for all the given ids,
+then use these node objects to form the adjacency list, rather than creating a new object
+each time we interact with the adjacency list for any vertex id.
+ */
+import java.util.*;
 
-// O(ElogV) time and O(V+E) space, used for storing the graph
+// O(ElogV) time (looking at BinaryHeap impl, but O(ElogE) using PQ) and O(V+E) space, used for storing the graph
 public class Dijkstras {
 	public class Node {
 		private int id;
@@ -14,6 +17,19 @@ public class Dijkstras {
 		public Node(int id) {
 			this.id = id;
 			this.key = Integer.MAX_VALUE;
+		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) return true;
+			if (o == null || getClass() != o.getClass()) return false;
+			Node node = (Node) o;
+			return id == node.id;
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(id);
 		}
 	}
 
@@ -75,7 +91,7 @@ public class Dijkstras {
 		// here, I'm not adding all the nodes to the PQ, just the src
 		pq.add(src);
 
-		while(!pq.isEmpty()) {           // O(ElogV)
+		while(!pq.isEmpty()) {           // O(ElogV) (with PriorityQueue this is actually O(ElogE))
 			//Node n = q.pollFirst();
 			Node n = pq.poll();
 			inQueue.put(n, false);
@@ -83,7 +99,7 @@ public class Dijkstras {
 				if(inQueue.get(e.des) && e.des.key > (n.key + e.weight)) {
 					//q.remove(e.des);
 					e.des.key = n.key + e.weight;
-					pq.add(e.des);       // O(logV)
+					pq.add(e.des);       // O(logV) (with PQ this will be O(logE), coz in worst case, this will be done for all edges)
 					// for printing the while path from source to a node,
 					// we can also keep track of a parent array, and update
 					// the parent[e.des] = n;

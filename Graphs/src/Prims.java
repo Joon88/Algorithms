@@ -45,7 +45,8 @@ public class Prims {
 		}
 
 	}
-
+	// When we are not directly dealing with edges e.g. sorting or comparing them, we can have
+	// only the destination vertex and the edge weight in the edge object
 	private static class Edge{
 		private Node dest;
 		private int weight;
