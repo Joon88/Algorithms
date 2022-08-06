@@ -2,7 +2,10 @@ import java.util.*;
 
 /*
 Tarjan's Algo : to find all strongly connected components in a graph or also to find
-if a directed graph is strongly connected.
+if a directed graph is strongly connected. An undirected graph will always be strongly
+connected. And all components of an undirected graph are also strongly connected.
+
+So, both Tarjan's and Kosaraju's Algo are used mainly for directed graphs.
 
 Time : O(V+E) and space : O(V+E) to store the graph
  */
