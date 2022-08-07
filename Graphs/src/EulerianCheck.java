@@ -35,7 +35,7 @@ public class EulerianCheck {
             return 1; // It's an Euler graph (graph with no edges at all)
         }
 
-        // 2a. Run DFS from the any node with > 0 degree
+        // 2a. Run DFS from any node with > 0 degree
         boolean[] visited = new boolean[graph.size()];
         DFS(node, graph, visited);
 

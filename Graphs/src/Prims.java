@@ -9,6 +9,10 @@ import java.util.TreeSet;
 // Prims - O(ElogV + VlogV) = O(ElogV) time and O(E+V) space to store the graph
 // This uses TreeSet with AdjacencyList
 // Look at TechDose video for Adjacency Matrix impl
+
+// it might look as if the single source shortest path tree formed by Dijkstra's Algo
+// is a MST, but its not. It might be sometimes, but not always.
+// (https://stackoverflow.com/questions/1909281/use-dijkstras-to-find-a-minimum-spanning-tree)
 public class Prims {
 	private Map<Node, List<Edge>> graph = new HashMap<>();
 

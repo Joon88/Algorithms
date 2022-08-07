@@ -67,7 +67,9 @@ public class TarjanSCC {
             while(stack.peek() != u) { // popping all elements until we get to the head of SCC
                 int popped = stack.pop();
                 scc.add(popped);
-                inStack[popped] = false;
+                inStack[popped] = false; // marking inStack as false, so that if any more edges come here, it'll
+                                         // find that disc[popped] > -1(visited) and inStack[popped] = false, so, it'll
+                                         // be a cross-edge.
             }
             int popped = stack.pop();
             scc.add(popped);
