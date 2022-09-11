@@ -325,7 +325,7 @@ public class Tree {
 	}
 
 	public boolean checkSimilarTrees(Node r1, Node r2) {
-		if (r1 == r2)
+		if (r1 == r2) // null == null is true in Java
 			return true;
 		if (r1 == null || r2 == null)
 			return false;
@@ -649,7 +649,7 @@ public class Tree {
 			}
 		}
 	}
-	
+
 	private void morrisPreorder(Node root) {
 		while (root != null) {
 			if (root.left == null) {
