@@ -277,7 +277,7 @@ public class Tree {
 	private boolean isBST(Node root, int min, int max) {
 		if (root == null)
 			return true;
-		if (min > root.data || max <= root.data)
+		if (min >= root.data || max < root.data)
 			return false;
 		return isBST(root.left, min, root.data) && isBST(root.right, root.data, max);
 	}
