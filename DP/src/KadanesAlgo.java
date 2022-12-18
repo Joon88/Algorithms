@@ -13,7 +13,7 @@ maxSubstringSumSoFar = max {
                               maxSubstringSumEndingHere(n)
                            }
 
-Example implementation of Kadane's Algo : LC-918(https://leetcode.com/problems/maximum-sum-circular-subarray/)
+Example implementation of Kadane's Algo : LC-918 (https://leetcode.com/problems/maximum-sum-circular-subarray/)
 */
 
 // O(n) time & O(1) space
