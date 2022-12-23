@@ -6,7 +6,7 @@ Soln - Same concept as MCM, but with different computation for each partition at
 
 2. Word Break | LC-139 (https://leetcode.com/problems/word-break/)
 Soln - Initial attempt was similar to MCM, but can be optimised further to have a 1-D DP
-solutions. Please also look at the BFS approach to solve this problem, give in the leetcode
+solutions (or the 2 ptr technique). Please also look at the BFS approach to solve this problem, give in the leetcode
 solutions.
 
  */
