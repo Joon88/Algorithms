@@ -75,7 +75,7 @@ public class KosarajuSCC {
             int src = orderQ.poll();
             if(visited[src] == 0) {
                 List<Integer> scc = new ArrayList<>();
-                DFS2(src, transposeGraph, visited, scc);
+                BFS2(src, transposeGraph, visited, scc);
                 sccs.add(scc);
             }
         }
