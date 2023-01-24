@@ -1,3 +1,5 @@
+// RADIX SORT : https://www.algoexpert.io/questions/radix-sort (uses the counting sort trick)
+
 import java.util.Arrays;
 
 public class Sorting {
@@ -13,7 +15,7 @@ public class Sorting {
 		int[] arr4 = {12,54,2321,65,32,-43,0,-1,-45,67,43,54,-1};
 		System.out.println(Arrays.toString(quickSort(arr4)));
 	}
-	
+
 	public static int[] insertionSort(int[] a) {
 		for(int i = 1 ; i < a.length ; i++) {
 			int key = a[i];
@@ -26,7 +28,7 @@ public class Sorting {
 		}
 		return a;
 	}
-	
+
 	public static int[] selectionSort(int a[]) {
 		for(int i = 0 ; i < a.length-1 ; i++) {
 			int min = a[i];
@@ -40,10 +42,10 @@ public class Sorting {
 			a[minIdx] = a[i];
 			a[i] = min;
 		}
-		
+
 		return a;
 	}
-	
+
 	public static int[] bubbleSort(int a[]) {
 		for(int i = 0 ; i < a.length - 1 ; i++) {
 			boolean swapFlag = false;
@@ -58,15 +60,15 @@ public class Sorting {
 			if(!swapFlag)
 				break;
 		}
-		
+
 		return a;
 	}
-	
+
 	public static int[] mergeSort(int[] a) {
 		mergeSrt(a, 0, a.length-1);
 		return a;
 	}
-	
+
 	private static void mergeSrt(int[] a, int beg, int end) {
 		if(beg < end) {
 			int mid = (beg + end)/2;
@@ -75,18 +77,18 @@ public class Sorting {
 			merge(a, beg, mid, end);
 		}
 	}
-	
+
 	private static void merge(int a[], int beg, int mid, int end) {
 		int left[] = new int[mid-beg+1];
 		int right[] = new int[end-mid];
-		
+
 		for(int i = 0 ; i < (mid-beg+1) ; i++) {
 			left[i] = a[beg+i];
 		}
 		for(int i = 0 ; i < (end-mid) ; i++) {
 			right[i] = a[mid+1+i];
 		}
-		
+
 		int i=0,j=0;
 		for(int k = beg ; k <= end ; k++) {
 			if(i == mid-beg+1) {
@@ -104,12 +106,12 @@ public class Sorting {
 			}
 		}
 	}
-	
+
 	public static int[] quickSort(int[] a) {
 		quickSrt(a, 0, a.length-1);
 		return a;
 	}
-	
+
 	private static void quickSrt(int[] a, int beg, int end) {
 		if(beg < end) {
 			int mid = partition(a, beg, end);
@@ -117,7 +119,7 @@ public class Sorting {
 			quickSrt(a, mid+1, end);
 		}
 	}
-	
+
 	private static int partition(int[] a, int beg, int end) {
 		int ptr = beg-1;
 		int pivot = a[end];
