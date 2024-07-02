@@ -43,11 +43,12 @@ public class FloydWarshall {
                     dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);
                 }
             }
+
+            // Checking for -ve weight cycles
+            for(int i = 0 ; i < dist.length ; i++)
+                if(dist[i][i] < 0)
+                    return;                         // -ve weight cycles present
         }
-        // Checking for -ve weight cycles
-        for(int i = 0 ; i < dist.length ; i++)
-            if(dist[i][i] < 0)
-                return;                         // -ve weight cycles present
 
         for(int i = 0 ; i < dist.length ; i++) {
             for(int j = 0 ; j < dist.length ; j++) {

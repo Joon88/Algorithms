@@ -68,7 +68,8 @@ public class KosarajuSCC {
             if(visited[src] == 0)
                 BFS(src, graph, orderQ, visited);
 
-        // Map<Integer, List<Integer>> transposeGraph = transpose(graph);
+        // Map<Integer, List<Integer>> transposeGraph = transpose(graph); // commented just coz we already have the
+                                                                          // graph transposed above
 
         Arrays.fill(visited, 0);
         while(!orderQ.isEmpty()) {

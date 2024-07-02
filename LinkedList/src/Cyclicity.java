@@ -9,18 +9,18 @@ public class Cyclicity {
 		SNode rslt = checkCycle(head);
 		System.out.println("Cyclicity result : " + (rslt == null ? "false" : "true at : " + rslt.data));
 	}
-	
+// Floyd's cycle finding algo (fast and slow pointers technique)
 	private SNode checkCycle(SNode head) {
 		SNode slow = head, fast = head;
 		while(fast != null && fast.next != null && fast.next.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 			if(slow == fast) {
-				slow = head;
-				while(slow != fast) {
-					slow = slow.next;
-					fast = fast.next;
-				}
+//				slow = head;
+//				while(slow != fast) {
+//					slow = slow.next;
+//					fast = fast.next;
+//				}
 				//System.out.println("Cycle found at : " + fast.data);
 				return fast;
 			}
@@ -28,7 +28,7 @@ public class Cyclicity {
 		//System.out.println("Cycle not found");
 		return null;
 	}
-	
+
 	public void overlapCheck() {
 		SNode head = new Merge().getSLL(new int[] { 11, 3, 5, 7, 2, 1, 56, 65 });
 		SNode head1 = new Merge().getSLL(new int[] { 11, 3, 5, 7, 2, 1, 56 });
@@ -36,22 +36,22 @@ public class Cyclicity {
 		while(curr1.next != null)
 			curr1 = curr1.next;
 		curr1.next = head.next.next.next;
-		
+
 		SNode rslt = checkNonCyclicOverlap(head, head1);
-		
+
 		System.out.println("Overlap result : " + (rslt == null ? "false" : "true at : " + rslt.data));
-		
+
 		// Overlap of linked lists with/without cycles
 		SNode curr = head;
 		while(curr.next != null)
 			curr = curr.next;
 
-		curr.next = head.next;	
-		
+		curr.next = head.next;
+
 		rslt = checkCyclicOverlap(head, head1);
 		System.out.println("Overlap with cycles result : " + (rslt == null ? "false" : "true at : " + rslt.data));
 	}
-	
+
 	private SNode checkNonCyclicOverlap(SNode head1, SNode head2) {
 		SNode curr1 = head1, curr2 = head2, end = null;
 		while(true) {
@@ -70,7 +70,7 @@ public class Cyclicity {
 			} else {
 				curr1 = curr1.next;
 			}
-			
+
 			if(curr2.next == null && end == null) {
 				end = curr2;
 				curr2 = head1;
@@ -84,7 +84,7 @@ public class Cyclicity {
 			}
 		}
 	}
-	
+
 	private SNode checkCyclicOverlap(SNode h1, SNode h2) {
 		SNode croot1 = checkCycle(h1);
 		SNode croot2 = checkCycle(h2);
@@ -111,12 +111,12 @@ public class Cyclicity {
 			curr1 = curr1.next;
 			curr2 = curr2.next;
 		}
-		
+
 		return curr1 == curr2 ? curr1 : croot2;
 		// or
 		// return curr1 == curr2 ? curr1 : croot1;
 	}
-	
+
 	private int getDistance(SNode h, SNode root) {
 		int size = 0;
 		while(h != root) {

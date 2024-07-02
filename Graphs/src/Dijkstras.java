@@ -97,7 +97,10 @@ public class Dijkstras {
 			inQueue.put(n, false);
 			for(Edge e : g.graph.get(n)) {
 				if(inQueue.get(e.des) && e.des.key > (n.key + e.weight)) {
-					//q.remove(e.des);
+					// Remove the object before updating it in the priority queue.
+					// This a far better way then to avoid using remove() at all.
+					if(e.des.key < Integer.MAX_VALUE)
+						pq.remove(e.des);
 					e.des.key = n.key + e.weight;
 					pq.add(e.des);       // O(logV) (with PQ this will be O(logE), coz in worst case, this will be done for all edges)
 					// for printing the while path from source to a node,

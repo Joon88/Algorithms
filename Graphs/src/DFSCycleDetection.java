@@ -30,7 +30,7 @@ public class DFSCycleDetection {
 	public boolean isCyclePresent() {
 		// int src = graph.keySet().iterator().next();
 		boolean isCycle = false;
-		Map<Integer, Boolean> visited = new HashMap<>();
+		Map<Integer, Boolean> visited = new HashMap<>(); // an alternative of this can be a processed map
 		Map<Integer, Boolean> inStack = new HashMap<>();
 		for (int i : graph.keySet()) {
 			visited.put(i, false);
@@ -54,7 +54,8 @@ public class DFSCycleDetection {
 		if (visited.get(root))
 			return false;
 
-		visited.put(root, true);
+		visited.put(root, true); // if processed map used, this line can be commented and processed can be set at the
+		                            // end of this function
 		inStack.put(root, true);
 		System.out.println(root);
 		boolean isCycle = false;
@@ -65,6 +66,7 @@ public class DFSCycleDetection {
 			}
 		}
 		inStack.put(root, false);
+		// processed.put(root, true);
 		return isCycle;
 	}
 
@@ -76,7 +78,7 @@ public class DFSCycleDetection {
 		for (int i : graph.keySet()) {
 			white.add(i);
 		}
-		
+
 		boolean rslt = false;
 		for(int i : graph.keySet())
 			if(checkCycleUsingColoring(i, white, grey, black)) {
@@ -94,7 +96,7 @@ public class DFSCycleDetection {
 			return false;
 		if (grey.contains(root))
 			return true;
-		
+
 		white.remove(root);
 		grey.add(root);
 		boolean isCycle = false;
@@ -106,7 +108,7 @@ public class DFSCycleDetection {
 		}
 		grey.remove(root);
 		black.add(root);
-		
+
 		return isCycle;
 	}
 }
