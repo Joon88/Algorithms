@@ -23,6 +23,7 @@ class KadanesAlgo {
 
         int maxSoFar = array[0];
         for(int i = 1 ; i < array.length ; i++) {
+            // here array[i] is the maxSubstringSumEndingHere
             array[i] = Math.max(array[i-1] + array[i], array[i]);
             maxSoFar = Math.max(maxSoFar, array[i]);
         }
