@@ -112,6 +112,7 @@ public class KosarajuSCC {
         }
     }
 
+    // O(V + E) time and O(V + E) space
     private static Map<Integer, List<Integer>> transpose(Map<Integer, List<Integer>> graph) {
         Map<Integer, List<Integer>> gt = new HashMap<>();
 
